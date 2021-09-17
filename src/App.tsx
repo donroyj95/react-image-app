@@ -41,9 +41,9 @@ function App() {
             <select
               className="select-category"
               onChange={(e) => selectCategory(e.target.value)}>
-              {Category.map((item) => {
+              {Category.map((item,index) => {
                 return (
-                  <option value={item}>{item}</option>
+                  <option key={index} value={item}>{item}</option>
                 )
               })}
             </select>
@@ -52,6 +52,7 @@ function App() {
           <label>Name</label>
           <br />
           <input
+            data-test="name"
             type="text"
             id="name"
             name="name"
