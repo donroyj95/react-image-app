@@ -1,0 +1,1 @@
+export  const Category = ['Cars','Flowers','Bikes','Books'];
