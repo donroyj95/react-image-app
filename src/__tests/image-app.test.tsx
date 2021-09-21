@@ -10,9 +10,10 @@ import thunk from "redux-thunk"
 import {render,screen,cleanup} from '@testing-library/react' 
 import {store} from '../state'
 import '@testing-library/jest-dom'
+import ResultsList from '../ResultsList';
 
 
-
+afterEach(cleanup)
 
 test('test',()=>{
     render(<Provider store={store}>
@@ -41,6 +42,20 @@ test('test',()=>{
     expect(results_h1).toHaveTextContent('Results');
 })
 
+
+
+// test('test results list',()=>{
+//     render(<ResultsList />);
+
+//     const category_h1 = screen.getByTestId('category-h1');
+//     expect(category_h1).toBeInTheDocument();
+//     expect(category_h1).toHaveTextContent('Select Category')
+
+
+// })
+
+
+
 describe('component test',()=>{
 
     let container: HTMLDivElement;
@@ -56,6 +71,7 @@ describe('component test',()=>{
     afterEach(()=>{
         document.body.removeChild(container);
         container.remove();
+        
     })
 
     it('Render correctly',()=>{

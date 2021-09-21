@@ -5,3 +5,11 @@ export interface Image {
     alt_description: string;
 
 }
+
+export interface Props {
+    resultsImages: Image[];
+
+    selectedImages: Image[];
+    loading: boolean;
+    selectImage: (image: Image) => void;
+}
