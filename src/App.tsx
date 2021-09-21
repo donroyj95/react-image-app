@@ -7,7 +7,7 @@ import { StateType } from './state/state-type';
 import { Image } from './common-interfaces/index'
 
 
-function App() {
+const App:React.FC = () => {
 
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
@@ -33,10 +33,11 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <>
+    <div className="container" >
       <div className='form-container'>
         <form>
-          <h1>Select Category</h1>
+          <h1 data-testid = "category-h1">Select Category</h1>
           <label>
             <select
               className="select-category"
@@ -48,8 +49,8 @@ function App() {
               })}
             </select>
           </label><br />
-          <h1>Filter</h1>
-          <label>Name</label>
+          <h1 data-testid = "filter-h1">Filter</h1>
+          <label data-testid = "name-label">Name</label>
           <br />
           <input
             data-test="name"
@@ -61,7 +62,7 @@ function App() {
             onChange={(e) => setName(e.target.value)}
           />
           <br /><br />
-          <label>Tag</label>
+          <label data-testid = "tag-label">Tag</label>
           <br />
           <input
             type="text"
@@ -74,7 +75,7 @@ function App() {
           <button onClick={(e) => filterHandler(e)}>Filter</button>
           <button onClick={(e) => clearHandler(e)}>Clear</button>
           <br /><br />
-          <h1>Results</h1><br />
+          <h1 data-testid = "results-h1">Results</h1><br />
 
           <div className="result-container">
             {state.loading ? <h3>Select a category</h3> : state.resultsImages.map((item: Image) => {
@@ -105,6 +106,7 @@ function App() {
       </div>
 
     </div>
+    </>
   );
 
 
