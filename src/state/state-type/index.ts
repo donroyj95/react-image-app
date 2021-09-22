@@ -1,6 +1,6 @@
 import { Image } from '../../common-interfaces/index'
 
-interface ImageState {
+export interface ImageState {
     selectedCategoryImages: Image[];
     resultsImages: Image[];
     clearValue: boolean;
@@ -9,6 +9,12 @@ interface ImageState {
 }
 
 
+// const initialState={
+//     selectedCategoryImages: [], resultsImages: [], clearValue: false,
+//     selectedImages: [], loading: true
+// };
 
+// export type StateType2  = typeof initialState;
 
 export type StateType = ImageState;
+
