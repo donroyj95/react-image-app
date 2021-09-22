@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { actionCreators, State } from './state';
 import { StateType } from './state/state-type';
 
-import SelectionPanel from './SelectionPanel';
-import ImagePanel from './ImagePanel';
+import SelectionPanel from './components/SelectionPanel';
+import ImagePanel from './components/ImagePanel';
 import styled from 'styled-components';
 
 
@@ -33,13 +33,13 @@ function App(): JSX.Element {
   return (
     <Container>
 
-      {<SelectionPanel
+      <SelectionPanel
         resultsImages={state.resultsImages}
         selectedImages={state.selectedImages}
         loading={state.loading}
         selectImage={selectImage}
 
-      />}
+      />
       <ImageContainer>
 
         {<ImagePanel

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Image } from './common-interfaces/index'
+import { Image } from '../common-interfaces/index'
 
 const CloseButton = styled.button`
         width: 30px;

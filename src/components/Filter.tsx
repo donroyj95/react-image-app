@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import Dispatch, { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators, State } from './state';
-import { StateType } from './state/state-type';
-import { Image, Props } from './common-interfaces/index'
+import { actionCreators, State } from '../state';
+import { StateType } from '../state/state-type';
+import { Image, Props } from '../common-interfaces/index'
 import ResultsList from './ResultsList';
 import { CategorySelection } from './CategorySelection';
 
@@ -32,11 +32,11 @@ export const Filter: React.FC<{}> = () => {
 
 
     return (
-        <div>
+        <div data-testid="filter-component">
             <h1 data-testid="filter-h1">Filter</h1>
             <label data-testid="name-label">Name</label><br />
             <input
-                data-test="name"
+                data-testid="name-input"
                 type="text"
                 id="name"
                 name="name"
@@ -48,15 +48,17 @@ export const Filter: React.FC<{}> = () => {
             <label data-testid="tag-label">Tag</label>
             <br />
             <input
+                data-testid="tag-input"
                 type="text"
                 name="tag"
+                id="tag"
                 placeholder="Enter Tag"
                 value={tag}
                 onChange={(e) => setTag(e.target.value)}
             />
             <br /><br />
-            <button onClick={(e) => filterHandler(e)}>Filter</button>
-            <button onClick={(e) => clearHandler(e)}>Clear</button>
+            <button data-testid="filter" name = "filter" onClick={(e) => filterHandler(e)}>Filter</button>
+            <button data-testid = "clear" name = "clear" onClick={(e) => clearHandler(e)}>Clear</button>
         </div>
     )
 }

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import Dispatch, { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators, State } from './state';
-import { StateType } from './state/state-type';
-import { Image, Props } from './common-interfaces/index'
+import { actionCreators, State } from '../state';
+import { StateType } from '../state/state-type';
+import { Image, Props } from '../common-interfaces/index'
 import ResultsList from './ResultsList';
 import { CategorySelection } from './CategorySelection';
 import { Filter } from './Filter';

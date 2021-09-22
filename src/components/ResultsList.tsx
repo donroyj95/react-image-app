@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Image, Props } from './common-interfaces/index'
+import { Image, Props } from '../common-interfaces/index'
 
 const ResultsContainer = styled.div`
     border-style: solid;
@@ -35,7 +35,7 @@ const ResultsList: React.FC<Props> = ({ loading, resultsImages, selectedImages, 
                                 value={item.id}
                                 onChange={() => selectImage(item)}
                                 checked={selectedImages.includes(item) ? true : false} />
-                            {item.alt_description}
+                                {item.alt_description}
 
                         </ResultItem>
                     )
