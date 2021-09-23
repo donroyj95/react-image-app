@@ -37,6 +37,8 @@ export const selectCategory = (type: string) => async (dispatch: Dispatch<Action
 
 export const clearSelections = () => {
     return (dispatch: Dispatch<Action>) => {
+        console.log("tems");
+        
         dispatch({
             type: ActionType.CLEAR,
         })

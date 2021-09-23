@@ -24,7 +24,7 @@ type Props = {
 const ImagePanel = React.memo((props: Props) => {
 
     const selectImage = props.selectImage;
-    console.log('props', props.images);
+    // console.log('props', props.images);
 
     const images = props.images;
 
@@ -34,9 +34,9 @@ const ImagePanel = React.memo((props: Props) => {
         <section>
             {images.map((photo: Image) => {
                 return (
-                    <ImageSection key={photo.id} >
-                        <CloseButton onClick={() => selectImage(photo)}>X</CloseButton>
-                        <ImageContainer src={photo.urls.small} alt=''></ImageContainer>
+                    <ImageSection data-testid= "image-section" key={photo.id} >
+                        <CloseButton data-testid="image-panel-close-btn" onClick={() => selectImage(photo)}>X</CloseButton>
+                        <ImageContainer data-testid = "image-container" src={photo.urls.small} alt=''></ImageContainer>
                     </ImageSection>
                 )
             })}

@@ -42,8 +42,6 @@ function SelectionPanel(state: Props): JSX.Element {
         selectImage={state.selectImage}
       />
     </FormContainer>
-
-
   )
 }
 

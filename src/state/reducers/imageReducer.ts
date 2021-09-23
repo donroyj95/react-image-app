@@ -2,7 +2,7 @@ import { ActionType, Action } from "../action-types/action-types";
 import { StateType } from "../state-type";
 
 
-const initialState: StateType = {
+export const initialState: StateType = {
     selectedCategoryImages: [], resultsImages: [], clearValue: false,
     selectedImages: [], loading: true
 };

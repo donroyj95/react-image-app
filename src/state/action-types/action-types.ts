@@ -25,7 +25,7 @@ interface Filter {
 
 interface ChangeCategory {
     type: ActionType.CHANGE_CATEGORY,
-    payload: Image
+    payload: Image[]
 }
 
 interface SelectImage {

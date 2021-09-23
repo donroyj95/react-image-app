@@ -4,14 +4,14 @@ import { ActionType, Action } from "../action-types/action-types";
 import { StateType } from "../state-type";
 
 
-const reducers: Reducer<CombinedState<{image: never;}>, Action> = combineReducers({
+const reducers = combineReducers({
     image: imageReducer
 })
 
 
 
 export default reducers;
-
+//: Reducer<CombinedState<{image: never;}>, Action>
  
 
 // export type State1 = GetAllReduxActions<typeof reducers>
