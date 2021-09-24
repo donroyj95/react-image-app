@@ -1,19 +1,8 @@
-export { }
-import App from '../App';
-import * as ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
-import { useDispatch, useSelector } from 'react-redux';
-import { StateType } from "../state/state-type";
-import { createStore, applyMiddleware } from "redux";
-import reducers from "../state/reducers";
-import thunk from "redux-thunk"
 import { render, screen, cleanup, fireEvent, getAllByRole, waitForElement } from '@testing-library/react'
 import { store } from '../state'
 import '@testing-library/jest-dom'
 import ResultsList from '../components/ResultsList';
-import SelectionPanel from '../components/SelectionPanel';
-import { bindActionCreators } from 'redux';
-import { actionCreators, State } from '../state';
 import { CategorySelection } from '../components/CategorySelection';
 import { Category } from '../Category';
 import { CategoryDropdown } from "../components/CategoryDropdown";
@@ -21,10 +10,7 @@ import { Filter } from "../components/Filter";
 import { CheckBoxList } from '../components/CheckBoxItem';
 import { Image } from '../common-interfaces/index';
 import ImagePanel from '../components/ImagePanel';
-import { ActionType, Action } from "../state/action-types/action-types";
-import imageReducer, { initialState } from '../state/reducers/imageReducer'
-import { selectCategory } from '../state/actions/actions';
-import configureMockStore from 'redux-mock-store';
+
 
 
 
@@ -34,17 +20,17 @@ afterEach(cleanup);
 
 const imageList: Image[] = [
     {
-        id: "WBpr_yH0Frg", alt_description: "assorted petaled flowers centerpiece inside room", 
+        id: "WBpr_yH0Frg", alt_description: "assorted petaled flowers centerpiece inside room",
         urls: { small: "https://images.unsplash.com/photo-1457089328109-e5d9bd499191?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjAzNjl8MHwxfHNlYXJjaHwxMXx8Rmxvd2Vyc3xlbnwwfHx8fDE2MzIzNjgwNjY&ixlib=rb-1.2.1&q=80&w=400" },
-        tags: [{ title: "flower" },{title:"flora"},{title:'centerpiece'}]
+        tags: [{ title: "flower" }, { title: "flora" }, { title: 'centerpiece' }]
     },
     {
-        id: "RPmWEtZLh7U", alt_description: "bunch of sunflowers", 
+        id: "RPmWEtZLh7U", alt_description: "bunch of sunflowers",
         urls: { small: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjAzNjl8MHwxfHNlYXJjaHwxM3x8Rmxvd2Vyc3xlbnwwfHx8fDE2MzIzNjgwNjY&ixlib=rb-1.2.1&q=80&w=400" },
         tags: [{ title: "sunflower" }]
     },
     {
-        id: "7SXNxz8UIw4", alt_description: "selective focus photography of red petaled flower", 
+        id: "7SXNxz8UIw4", alt_description: "selective focus photography of red petaled flower",
         urls: { small: "https://images.unsplash.com/photo-1505129013025-ecf8f0168373?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjAzNjl8MHwxfHNlYXJjaHwxNXx8Rmxvd2Vyc3xlbnwwfHx8fDE2MzIzNjgwNjY&ixlib=rb-1.2.1&q=80&w=400" },
         tags: [{ title: "flower" }]
     }
@@ -350,168 +336,18 @@ describe('Image panel tests', () => {
 
 
 
-describe('Test reducers', () => {
 
-
-
-
-    test('should return initial state', () => {
-
-        expect(imageReducer(initialState, {})).toEqual(
-            {
-                selectedCategoryImages: [],
-                resultsImages: [],
-                clearValue: false,
-                selectedImages: [],
-                loading: true
-            })
-    })
-
-    test('should return correct filtered objects as resultsImages when filter name given', () => {
-
-        const filterInitialObject: StateType = {
-            selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
-            selectedImages: [], loading: false
-        }
-
-        expect(imageReducer(filterInitialObject, {
-            type: ActionType.FILTER,
-            payload: {
-                name: "flowers",
-                tag: ""
-            }
-        })).toEqual({
-            selectedCategoryImages: imageList,
-            resultsImages: [imageList[0], imageList[1]],
-            clearValue: false,
-            selectedImages: [],
-            loading: false
-        })
-    })
-
-
-
-
-    test('should return correct filtered objects as resultsImages when filter tag given', () => {
-
-        const filterInitialObject: StateType = {
-            selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
-            selectedImages: [], loading: false
-        }
-
-        expect(imageReducer(filterInitialObject, {
-            type: ActionType.FILTER,
-            payload: {
-                name: "",
-                tag: "sunflower"
-            }
-        })).toEqual({
-            selectedCategoryImages: imageList,
-            resultsImages: [imageList[1]],
-            clearValue: false,
-            selectedImages: [],
-            loading: false
-        })
-    })
-
-
-
-
-
-    test('should selected image add to selectedImage list',()=>{
-        
-        const selectImageInitialObject: StateType = {
-            selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
-            selectedImages: [], loading: false
-        }
-
-        expect(imageReducer(selectImageInitialObject, {
-            type: ActionType.SELECT_IMAGE,
-            payload: imageList[1]
-        })).toEqual({
-            selectedCategoryImages: imageList,
-            resultsImages: [],
-            clearValue: false,
-            selectedImages: [imageList[1]],
-            loading: false
-        })
-
-    })
-
-
-
-
-    test('should set initial image list into resultImage list when action type is CLEAR',()=>{
-        
-        const selectImageInitialObject: StateType = {
-            selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
-            selectedImages: [], loading: false
-        }
-
-        expect(imageReducer(selectImageInitialObject, {
-            type: ActionType.CLEAR
-        })).toEqual({
-            selectedCategoryImages: imageList,
-            resultsImages: imageList,
-            clearValue: false,
-            selectedImages: [],
-            loading: false
-        })
-
-    })
-
-
-
-
-    test('should set selectedCategoryImages & resultsImages to new category images when action type is CHANGE_CATEGORY',()=>{
-        
-        const selectImageInitialObject: StateType = {
-            selectedCategoryImages: [], resultsImages: [], clearValue: false,
-            selectedImages: [], loading: false
-        }
-
-        expect(imageReducer(selectImageInitialObject, {
-            type: ActionType.CHANGE_CATEGORY,
-            payload: imageList
-        })).toEqual({
-            selectedCategoryImages: imageList,
-            resultsImages: imageList,
-            clearValue: false,
-            selectedImages: [],
-            loading: false
-        })
-
-    })
-
-
-
-
-    test('should return loading true when action type fails', () => {
-
-        expect(imageReducer(initialState, { type: ActionType.FAIL })).toEqual(
-            {
-                selectedCategoryImages: [],
-                resultsImages: [],
-                clearValue: false,
-                selectedImages: [],
-                loading: true
-            })
-    })
-
-
-
-})
 
 
 
 
 // describe('Test actions',()=>{
-    
+
 
 //     test('action',async ()=>{
 //         console.log(selectCategory('cake'));
 //     })
-    
+
 //     //expect(selectCategory('cake')).
 
 

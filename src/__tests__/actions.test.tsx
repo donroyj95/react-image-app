@@ -1,11 +1,8 @@
 import configureMockStore, { MockStoreCreator } from 'redux-mock-store';
-import * as selectActions from '../state/actions/actions';
 import thunk from "redux-thunk";
 import { ActionType, Action } from '../state/action-types/action-types';
-
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
-import { useDispatch } from 'react-redux';
 import { Dispatch } from "redux";
 import axios from 'axios';
 import { Image } from '../common-interfaces/index';
@@ -18,13 +15,13 @@ import { Image } from '../common-interfaces/index';
 
 
 describe('Testing actions', () => {
-  
+
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const store = mockStore();
   const dispatch: Dispatch<Action> = store.dispatch;
 
-  const { clearSelections, selectCategory,selectImage,filterNameAndTag } = bindActionCreators(actionCreators, dispatch);
+  const { clearSelections, selectCategory, selectImage, filterNameAndTag } = bindActionCreators(actionCreators, dispatch);
 
   beforeEach(() => {
     store.clearActions();
@@ -71,12 +68,12 @@ describe('Testing actions', () => {
 
 
 
-  test('should return expectedActions when call selectImage action',() => {
-    const image:Image = {
-      id: "7SXNxz8UIw4", alt_description: "selective focus photography of red petaled flower", 
+  test('should return expectedActions when call selectImage action', () => {
+    const image: Image = {
+      id: "7SXNxz8UIw4", alt_description: "selective focus photography of red petaled flower",
       urls: { small: "https://images.unsplash.com/photo-1505129013025-ecf8f0168373?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjAzNjl8MHwxfHNlYXJjaHwxNXx8Rmxvd2Vyc3xlbnwwfHx8fDE2MzIzNjgwNjY&ixlib=rb-1.2.1&q=80&w=400" },
       tags: [{ title: "flower" }]
-  };
+    };
 
     const expectedActions = [
       {
@@ -92,7 +89,7 @@ describe('Testing actions', () => {
 
 
 
-  test('should return expectedActions when call filterNameAndTag action',() => {
+  test('should return expectedActions when call filterNameAndTag action', () => {
     const name: string = 'test';
     const tag: string = 'test tag';
 
@@ -106,7 +103,7 @@ describe('Testing actions', () => {
       }
     ];
 
-    filterNameAndTag(name,tag);
+    filterNameAndTag(name, tag);
     expect(store.getActions()).toEqual(expectedActions);
   });
 
