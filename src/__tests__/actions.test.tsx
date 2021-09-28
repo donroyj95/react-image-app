@@ -44,7 +44,7 @@ describe('Testing actions', () => {
 
 
 
-  test('should return expectedActions when call selectCategory action', async () => {
+  it('should return expectedActions when call selectCategory action', async () => {
     const category: string = 'car';
 
     const url = "https://api.unsplash.com/search/photos?page=2&query=" + category + "&client_id=" + "Up2AjDWTexG6Qzh1EcgW4EWdRxHCL0quU875jDOpeHY";
@@ -68,7 +68,7 @@ describe('Testing actions', () => {
 
 
 
-  test('should return expectedActions when call selectImage action', () => {
+  it('should return expectedActions when call selectImage action', () => {
     const image: Image = {
       id: "7SXNxz8UIw4", alt_description: "selective focus photography of red petaled flower",
       urls: { small: "https://images.unsplash.com/photo-1505129013025-ecf8f0168373?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjAzNjl8MHwxfHNlYXJjaHwxNXx8Rmxvd2Vyc3xlbnwwfHx8fDE2MzIzNjgwNjY&ixlib=rb-1.2.1&q=80&w=400" },
@@ -89,7 +89,7 @@ describe('Testing actions', () => {
 
 
 
-  test('should return expectedActions when call filterNameAndTag action', () => {
+  it('should return expectedActions when call filterNameAndTag action', () => {
     const name: string = 'test';
     const tag: string = 'test tag';
 

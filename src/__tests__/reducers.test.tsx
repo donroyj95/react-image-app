@@ -26,7 +26,7 @@ describe('Test reducers', () => {
 
 
 
-    test('should return initial state', () => {
+    it('should return initial state', () => {
 
         expect(imageReducer(initialState, {})).toEqual(
             {
@@ -38,7 +38,7 @@ describe('Test reducers', () => {
             })
     })
 
-    test('should return correct filtered objects as resultsImages when filter name given', () => {
+    it('should return correct filtered objects as resultsImages when filter name given', () => {
 
         const filterInitialObject: StateType = {
             selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
@@ -63,7 +63,7 @@ describe('Test reducers', () => {
 
 
 
-    test('should return correct filtered objects as resultsImages when filter tag given', () => {
+    it('should return correct filtered objects as resultsImages when filter tag given', () => {
 
         const filterInitialObject: StateType = {
             selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
@@ -89,7 +89,7 @@ describe('Test reducers', () => {
 
 
 
-    test('should selected image add to selectedImage list', () => {
+    it('should selected image add to selectedImage list', () => {
 
         const selectImageInitialObject: StateType = {
             selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
@@ -112,7 +112,7 @@ describe('Test reducers', () => {
 
 
 
-    test('should set initial image list into resultImage list when action type is CLEAR', () => {
+    it('should set initial image list into resultImage list when action type is CLEAR', () => {
 
         const selectImageInitialObject: StateType = {
             selectedCategoryImages: imageList, resultsImages: [], clearValue: false,
@@ -134,7 +134,7 @@ describe('Test reducers', () => {
 
 
 
-    test('should set selectedCategoryImages & resultsImages to new category images when action type is CHANGE_CATEGORY', () => {
+    it('should set selectedCategoryImages & resultsImages to new category images when action type is CHANGE_CATEGORY', () => {
 
         const selectImageInitialObject: StateType = {
             selectedCategoryImages: [], resultsImages: [], clearValue: false,
@@ -157,7 +157,7 @@ describe('Test reducers', () => {
 
 
 
-    test('should return loading true when action type fails', () => {
+    it('should return loading true when  action type fails', () => {
 
         expect(imageReducer(initialState, { type: ActionType.FAIL })).toEqual(
             {

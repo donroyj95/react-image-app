@@ -114,7 +114,7 @@ describe('Selection component', () => {
         fireEvent.change(getByTestId('dropdown'), { target: { value: Category[1] } })
 
 
-        let options = getAllByTestId('select-option');
+        let options = getAllByTestId('select-option') as HTMLOptionElement[];
         expect(options[0].selected).toBeFalsy();
         expect(options[1].selected).toBeTruthy();
         expect(options[2].selected).toBeFalsy();
@@ -329,7 +329,7 @@ describe('Image panel tests', () => {
         render(<ImagePanel images={imageList} selectImage={mockedOnChange} />);
         const image_container = screen.getAllByTestId('image-container');
 
-        expect(image_container[0].src).toBe(imageList[0].urls.small);
+        expect(image_container[0].getAttribute('src')).toBe(imageList[0].urls.small);
     })
 
 })

@@ -6,17 +6,17 @@ width: 185px;
 `;
 
 type Props = {
-    selectCategory:(type:string)=>void;
+    selectCategory: (type: string) => void;
 }
 
-export const CategoryDropdown = (props:Props) : JSX.Element => {
+export const CategoryDropdown = (props: Props): JSX.Element => {
     return (
         <label>
-            <SelectCategory data-testid="dropdown"
+            <SelectCategory data-testid="dropdown" id="dropdown"
                 onChange={(e) => props.selectCategory(e.target.value)}>
                 {Category.map((item, index) => {
                     return (
-                        <option data-testid = 'select-option' key={index} value={item}>{item}</option>
+                        <option data-testid='select-option' key={index} value={item}>{item}</option>
                     )
                 })}
             </SelectCategory>

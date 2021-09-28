@@ -19,11 +19,11 @@ const ResultsList: React.FC<Props> = ({ loading, resultsImages, selectedImages, 
     return (
         <>
             <h1 data-testid="results-h1">Results</h1>
-            <ResultsContainer data-testid="results-container" >
+            <ResultsContainer data-testid="results-container" id="results-container">
 
-                {loading ? <h3 data-testid= "loading-heading">Select a category</h3> : resultsImages.map((item: Image) => {
+                {loading ? <h3 data-testid="loading-heading">Select a category</h3> : resultsImages.map((item: Image) => {
                     return (
-                        
+
                         <CheckBoxItem key={item.id} item={item} selectImage={selectImage} selectedImages={selectedImages} />
                     )
                 })
