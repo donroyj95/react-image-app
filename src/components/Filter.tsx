@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import Dispatch, { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,21 +9,25 @@ import ResultsList from './ResultsList';
 import { CategorySelection } from './CategorySelection';
 
 
-export const Filter: React.FC<{}> = () => {
+export const Filter: React.FC<{}> = React.memo(() => {
+    console.log('inside filter');
+
 
     const [name, setName] = useState("");
     const [tag, setTag] = useState("");
     const dispatch = useDispatch();
-    const { clearSelections, filterNameAndTag } = bindActionCreators(actionCreators, dispatch);
+    const { clearSelections, filterNameAndTag } = useMemo(() => { return bindActionCreators(actionCreators, dispatch) }, []);;
 
     const filterHandler = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
+
         if (name || tag) {
             filterNameAndTag(name, tag);
         }
     }
 
     const clearHandler = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
         event.preventDefault();
         setName('');
         setTag('');
@@ -57,10 +61,10 @@ export const Filter: React.FC<{}> = () => {
                 onChange={(e) => setTag(e.target.value)}
             />
             <br /><br />
-            <button data-testid="filter" name = "filter" onClick={(e) => filterHandler(e)}>Filter</button>
-            <button data-testid = "clear" name = "clear" onClick={(e) => clearHandler(e)}>Clear</button>
+            <button data-testid="filter" name="filter" onClick={(e) => filterHandler(e)}>Filter</button>
+            <button data-testid="clear" name="clear" onClick={(e) => clearHandler(e)}>Clear</button>
         </div>
     )
 }
-
+)
 

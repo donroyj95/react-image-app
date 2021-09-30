@@ -1,6 +1,6 @@
 import configureMockStore, { MockStoreCreator } from 'redux-mock-store';
 import thunk from "redux-thunk";
-import { ActionType, Action } from '../state/action-types/action-types';
+import { ActionType, Action } from '../state/action-types/types';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { Dispatch } from "redux";

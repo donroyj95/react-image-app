@@ -15,13 +15,13 @@ type Prop = {
     selectedImages: Image[];
 }
 
-export const CheckBoxList = (prop: Prop): JSX.Element => {
+export const CheckBoxList = React.memo((prop: Prop): JSX.Element => {
 
 
     return (
         <ResultItem key={prop.item.id} data-testid="result-field">
             <input
-                data-testid = "checkbox_item"
+                data-testid="checkbox_item"
                 type="checkbox"
                 value={prop.item.id}
                 onChange={() => prop.selectImage(prop.item)}
@@ -30,4 +30,4 @@ export const CheckBoxList = (prop: Prop): JSX.Element => {
 
         </ResultItem>
     )
-}
+})

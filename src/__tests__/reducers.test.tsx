@@ -1,6 +1,6 @@
 import { StateType } from "../state/state-type";
 import { Image } from '../common-interfaces/index';
-import { ActionType, Action } from "../state/action-types/action-types";
+import { ActionType, Action } from "../state/action-types/types";
 import imageReducer, { initialState } from '../state/reducers/imageReducer'
 
 const imageList: Image[] = [

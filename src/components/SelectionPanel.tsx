@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-
-import Dispatch, { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useMemo } from 'react';
+import Dispatch, { useDispatch, useSelector, } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from '../state';
-import { StateType } from '../state/state-type';
-import { Image, Props } from '../common-interfaces/index'
+import { Props } from '../common-interfaces/index'
 import ResultsList from './ResultsList';
 import { CategorySelection } from './CategorySelection';
 import { Filter } from './Filter';
@@ -24,10 +22,7 @@ function SelectionPanel(state: Props): JSX.Element {
 
 
   const dispatch = useDispatch();
-  const { selectCategory } = bindActionCreators(actionCreators, dispatch);
-
-
-
+  const { selectCategory } = useMemo(() => { return bindActionCreators(actionCreators, dispatch) }, [])
 
 
   return (

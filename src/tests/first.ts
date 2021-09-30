@@ -1,4 +1,4 @@
-import { Selector, test, fixture } from 'testcafe';
+import { Selector, test, fixture } from "testcafe";
 import { Category } from '../Category'
 
 

@@ -10,6 +10,8 @@ type Props = {
 }
 
 export const CategoryDropdown = (props: Props): JSX.Element => {
+    //console.log('inside category dropdown');
+
     return (
         <label>
             <SelectCategory data-testid="dropdown" id="dropdown"

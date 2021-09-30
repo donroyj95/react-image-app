@@ -34,4 +34,4 @@ const ResultsList: React.FC<Props> = ({ loading, resultsImages, selectedImages, 
     )
 }
 
-export default ResultsList;
+export default React.memo(ResultsList);
